@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import useLocalStorage from './hooks/useLocalStorage';
+import CardList from './pages/CardList/CardList';
+import { ICard } from './types';
+import { sleep } from './utils/utils';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [loading, setLoading] = useState<boolean>(false);
+	const [cards, setCardData] = useState<ICard[]>([]);
+	const [value, updateValue] = useLocalStorage('cards', [] as ICard[]);
+
+	useEffect(() => {
+		// fetch cards
+		const fetchCards = async (): Promise<ICard[]> => {
+			const response = await fetch('/cards');
+			await sleep(5000);
+			const data = await response.json();
+			return data as ICard[];
+		};
+
+		// if value present in local storage get it from local storage and update the state
+		if (value?.length) {
+			setCardData(value);
+		} else {
+			// else fetch from mock api and update the state and local storage
+			setLoading(true);
+			fetchCards().then((cards: ICard[]) => {
+				setCardData(cards);
+				updateValue(cards);
+				setLoading(false);
+			});
+		}
+	}, [value, updateValue]);
+
+	return (
+		<div>
+			<header className="header">Card Drag & Drop Demo</header>
+			<CardList cards={cards} isloading={loading} />;
+		</div>
+	);
 }
 
 export default App;

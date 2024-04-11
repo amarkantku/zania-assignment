@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fix:format": "prettier -w src/**/*{ts,tsx,js,tsx,json}"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +40,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "msw": "^2.2.13",
+    "prettier": "^3.2.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
