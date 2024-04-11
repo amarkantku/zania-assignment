@@ -19,6 +19,6 @@ then again run if application is not running
 ```npm run start```
 
 ## Screenshots
-![Drag & Drop Card List](/zania-assignment\src\images\drag-and-drop-demo.png?raw=true "Card List")
+![Drag & Drop Card List](https://github.com/amarkantku/zania-assignment/blob/master/src/images/card-view-modal.png)
 
-![Modal View](/zania-assignment\src\images\card-view-modal.png?raw=true "Card view in modal")
+![Modal View](https://github.com/amarkantku/zania-assignment/blob/master/src/images/card-view-modal.png)
