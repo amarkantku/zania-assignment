@@ -14,7 +14,7 @@ function App() {
 		// fetch cards
 		const fetchCards = async (): Promise<ICard[]> => {
 			const response = await fetch('/cards');
-			await sleep(5000);
+			await sleep(2000); // only for simulation
 			const data = await response.json();
 			return data as ICard[];
 		};
