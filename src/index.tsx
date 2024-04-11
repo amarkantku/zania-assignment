@@ -5,13 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 async function enableMocking() {
-	if (process.env.NODE_ENV !== 'development') {
-		return;
+	if (process.env.NODE_ENV === 'development' || process.env.REACT_APP_MSW_ENABLED) {
+		const { worker } = await import('./mocks/browser');
+		// `worker.start()` returns a Promise that resolves
+		// once the Service Worker is up and ready to intercept requests.
+		return worker.start();
 	}
-	const { worker } = await import('./mocks/browser');
-	// `worker.start()` returns a Promise that resolves
-	// once the Service Worker is up and ready to intercept requests.
-	return worker.start();
+	return;
 }
 
 enableMocking().then(() => {

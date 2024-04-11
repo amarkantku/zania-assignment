@@ -17,7 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm run msw-setup && react-scripts start",
+    "start": "react-scripts start",
     "msw-setup": "npx msw init public/",
     "build": "react-scripts build",
     "test": "react-scripts test",
