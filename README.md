@@ -1,8 +1,7 @@
 # Card Drag & Drop Demo
 
 ### To clone this application
-Open the terminal and run the following command
-```git clone https://github.com/amarkantku/zania-assignment.git```
+Open the terminal and run ```git clone https://github.com/amarkantku/zania-assignment.git```
 
 ### To run the application
 ```
